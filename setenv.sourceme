@@ -1,0 +1,16 @@
+#Container name
+#APP_NAME="devbox"
+APP_NAME="hqr-dev-2"
+ROOT_VOLUME_MOUNT_DIR=/c/Users/asochal/volumes
+SPARK_SCI_DIR=spark-sci
+
+
+#These are dynamically assigned by build process
+DOCKER_IP=
+DOCKER_HOST_NAME=
+
+#These are fixed. No need to change.
+DOCKER_HUB_USER="ansosoft"
+DOCKER_VBOX_DRIVER="virtualbox"
+IMAGE_TAG="1"
+

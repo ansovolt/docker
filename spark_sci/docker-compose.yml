@@ -1,0 +1,14 @@
+version: '2'
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - "2181:2181"
+  spark_sci:
+    build: .
+    ports:
+      - "7580:7580"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /c/Users/asochal/volumes/spark_sci/notebook
+      - /c/Users/asochal/volumes/spark_sci/data

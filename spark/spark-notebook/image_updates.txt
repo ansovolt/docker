@@ -1,0 +1,5 @@
+
+#docker image upgrade for notebook image
+
+#pip3 install bcolz
+conda install --quiet --yes bcolz

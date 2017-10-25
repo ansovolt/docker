@@ -1,0 +1,16 @@
+#Container name
+APP_NAME="devbox"
+
+
+
+
+#These are dynamically assigned by build process
+DOCKER_IP=
+DOCKER_HOST_NAME=
+
+
+#These are fixed. No need to change.
+DOCKER_HUB_USER="ansosoft"
+DOCKER_VBOX_DRIVER="virtualbox"
+IMAGE_TAG="1"
+

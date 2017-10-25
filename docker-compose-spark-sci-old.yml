@@ -1,0 +1,53 @@
+version: '2'
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - "2181:2181"
+
+  kafka:
+    build: ./kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 192.168.99.100
+      #KAFKA_ADVERTISED_HOST_NAME: kafka
+      KAFKA_CREATE_TOPICS: "ansotopic:1:1"
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - zookeeper
+
+  hbase:
+    build: ./hbase
+    ports:      
+      - "16010:16010" 
+      - "9095:9095"
+      - "8085:8085"
+      - "60030:60030"
+      - "60020:60020"
+      - "60010:60010"
+      - "60000:60000"
+    
+    environment:
+      - HBASE_ZOOKEEPER_QUORUM=192.168.99.100:2181
+      - ZK_QUORUM=192.168.99.100
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /c/Users/asochal/volumes/hbase/data:/data
+    depends_on:
+      - zookeeper
+
+  spark_sci:
+    build: ./spark_sci
+    ports:
+      - "7580:7580"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /c/Users/asochal/volumes/spark_sci/notebook:/opt/zeppelin/notebook
+      - /c/Users/asochal/volumes/spark_sci/data:/opt/zeppelin/data
+    depends_on:
+      - kafka
+      - hbase
+  

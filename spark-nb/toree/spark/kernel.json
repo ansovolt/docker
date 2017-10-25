@@ -1,0 +1,17 @@
+{
+    "display_name": "Spark 2.2.0",
+    "language_info": { "name": "scala" },
+    "argv": [
+        "/home/conway/temp/incubator-toree/dist/spark-kernel/bin/spark-kernel", "--profile", "{connection_file}"
+    ],
+    "codemirror_mode": "scala",
+    "env": {
+        "SPARK_OPTS": "--master=local[1] --driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M --driver-java-options=-Dlog4j.logLevel=info --repositories http://repository.mapr.com/maven --packages org.apache.hbase:hbase-client:1.1.1-mapr-1602-m7-5.1.0,org.apache.hbase:hbase-server:1.1.1-mapr-1602-m7-5.1.0",
+        "MAX_INTERPRETER_THREADS": "16",
+        "CAPTURE_STANDARD_OUT": "true",
+        "CAPTURE_STANDARD_ERR": "true",
+        "SEND_EMPTY_OUTPUT": "false",
+        "SPARK_HOME": "/usr/local/spark",
+        "PYTHONPATH": "/usr/local/spark/python:/usr/local/spark/python/lib/py4j-0.10.4-src.zip"
+     }
+}
