@@ -1,0 +1,12 @@
+version: '2'
+services:
+
+  spark_sci:
+    build: ../spark_sci
+    ports:
+      - "7580:7580"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /c/Users/asochal/volumes/spark_sci/notebook:/opt/zeppelin/notebook
+      - /c/Users/asochal/volumes/spark_sci/data:/opt/zeppelin/data
+  

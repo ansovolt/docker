@@ -12,7 +12,9 @@ RUN apt-get update \
  && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
  && locale-gen \
  && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/* 
+
+
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
@@ -30,14 +32,20 @@ RUN apt-get update \
 #################
 ## JAVA
 #################
-ENV JAVA_HOME /usr/jdk1.8.0_144
+#ENV JAVA_HOME /usr/jdk1.8.0_144
+ENV JAVA_HOME /usr/jdk1.8.0_152
 ENV PATH $PATH:$JAVA_HOME/bin
+#RUN curl -sL --retry 3 --insecure \
+#  --header "Cookie: oraclelicense=accept-securebackup-cookie;" \
+#  "http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz" \
+#  | gunzip \
+#  | tar x -C /usr/ 
+
 RUN curl -sL --retry 3 --insecure \
   --header "Cookie: oraclelicense=accept-securebackup-cookie;" \
-  "http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz" \
+  "http://download.oracle.com/otn-pub/java/jdk/8u152-b16/aa0333dd3019491ca4f6ddbe78cdb6d0/server-jre-8u152-linux-x64.tar.gz" \
   | gunzip \
   | tar x -C /usr/ 
-
   
 #################
 ## SPARK
@@ -60,6 +68,7 @@ WORKDIR $SPARK_HOME
 ENV Z_HOME /opt/zeppelin
 RUN mkdir -p ${Z_HOME}/data
 RUN mkdir -p /hbase/conf
+
 ADD zeppelin-0.7.2-bin-all ${Z_HOME}
 
 

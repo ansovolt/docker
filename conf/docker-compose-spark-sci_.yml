@@ -6,17 +6,20 @@ services:
       - "2181:2181"
  
   kafka:
-    build: ./kafka
+    build: ../kafka
     ports:
       - "9092:9092"
+      - "8082:8082"
     environment:
       KAFKA_ADVERTISED_HOST_NAME: 192.168.99.100
       KAFKA_ADVERTISED_PORT: 9092
-      #KAFKA_ADVERTISED_HOST_NAME: kafka
       KAFKA_CREATE_TOPICS: "ansotopic1:1:1,ansotopic8:1:1,ansotopic100:1:1,ansotopic101:1:1"
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
     depends_on:
       - zookeeper
+#    volumes:
+#      - /c/Users/asochal/volumes/kafka:/kafka
+
 
   vertx:    
     build:

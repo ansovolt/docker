@@ -1,0 +1,15 @@
+version: '2'
+services:
+
+  jupyter:
+    #image: jupyter/all-spark-notebook
+    build:
+      context: ../jupyter-spark
+    ports:      
+      - "8888:8888"
+    environment:
+      - GRANT_SUDO=yes
+    volumes:
+      - /c/Users/asochal/volumes/jupyter-spark/ntbs:/home/docker/workspace
+      - /c/Users/asochal/volumes/jupyter-spark/data:/home/docker/data
+    #entrypoint: start-notebook.sh --NotebookApp.token=''

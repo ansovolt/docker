@@ -68,6 +68,19 @@ case $1 in
 		
         ;;
 
+		
+	deploy)
+		echo "=>deploy..."
+		docker-compose --file conf/$2 up --build --force-recreate &
+		;;
+
+	undeploy)
+		echo "=>undeploy..."
+		docker-compose --file /conf/$2 down
+		;;
+		
+			
+
     down)        
         echo "=>Down..."
 		DOCKER_HOST_NAME=${APP_NAME}-${DOCKER_VBOX_DRIVER}		

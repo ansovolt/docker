@@ -1,6 +1,6 @@
 #Container name
 #APP_NAME="devbox"
-APP_NAME="hqr-dev-2"
+APP_NAME="dev"
 ROOT_VOLUME_MOUNT_DIR=/c/Users/asochal/volumes
 SPARK_SCI_DIR=spark-sci
 
